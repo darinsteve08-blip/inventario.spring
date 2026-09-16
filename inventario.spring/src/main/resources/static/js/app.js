@@ -15,7 +15,7 @@ function cargarDashboard() {
 
     if (!elTotal) return; 
 
-    fetch('http://localhost:8081/api/productos')
+    fetch('https://inventario-api-15v1.onrender.com/api/productos')
     .then(respuesta => respuesta.json())
     .then(datos => {
         elTotal.textContent = datos.length;
@@ -52,7 +52,7 @@ function cargarDashboard() {
 function mostrarProductos() {
     if (!tabla) return; 
     
-    fetch('http://localhost:8081/api/productos')
+    fetch('https://inventario-api-15v1.onrender.com/api/productos')
     .then(respuesta => respuesta.json())
     .then(datos => {
         listaProductosGlobal = datos; // Guardamos los datos globalmente
@@ -139,7 +139,7 @@ if (formulario) {
     const idEditar = localStorage.getItem("idEditar");
 
     if (idEditar) {
-        fetch(`http://localhost:8081/api/productos/${idEditar}`)
+        fetch(`https://inventario-api-15v1.onrender.com/api/productos/${idEditar}`)
         .then(res => res.json())
         .then(p => {
             document.getElementById("codigo").value = p.codigo;
@@ -163,12 +163,12 @@ if (formulario) {
             cantidad: document.getElementById("cantidad").value
         };
 
-        let url = 'http://localhost:8081/api/productos';
+        let url = 'https://inventario-api-15v1.onrender.com/api/productos';
         let metodo = 'POST';
 
         if (idEditar) {
             producto.id = idEditar;
-            url = `http://localhost:8081/api/productos/${idEditar}`;
+            url = `https://inventario-api-15v1.onrender.com/api/productos/${idEditar}`;
             metodo = 'PUT';
         }
 
@@ -203,7 +203,7 @@ if (formulario) {
 
 function eliminarProducto(id) {
     if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
-        fetch(`http://localhost:8081/api/productos/${id}`, {
+        fetch(`https://inventario-api-15v1.onrender.com/api/productos/${id}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -236,12 +236,12 @@ function actualizarStock(idProducto, cantidadActual) {
         return;
     }
 
-    fetch(`http://localhost:8081/api/productos/${idProducto}`)
+    fetch(`https://inventario-api-15v1.onrender.com/api/productos/${idProducto}`)
         .then(res => res.json())
         .then(producto => {
             producto.cantidad = nuevaCantidad; 
 
-            return fetch(`http://localhost:8081/api/productos/${idProducto}`, {
+            return fetch(`https://inventario-api-15v1.onrender.com/api/productos/${idProducto}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(producto)
