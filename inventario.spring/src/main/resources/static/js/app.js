@@ -290,7 +290,7 @@ function configurarInterfazSegunRol() {
         `;
     }
 
-    // Restricciones visuales y de rutas para OPERARIO
+    // Restricciones visuales y de rutas para OPERARIO: Solo ve Inicio y Productos, y en productos solo modifica stock
     if (rol === 'OPERARIO') {
         if (menuRegistrar) menuRegistrar.style.display = 'none';
         if (btnNuevoProducto) btnNuevoProducto.style.display = 'none';
@@ -314,13 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
     cargarDashboard();
     mostrarProductos();
 });
+
 function exportarExcel() {
     if (!listaProductosGlobal || listaProductosGlobal.length === 0) {
         alert("No hay productos para exportar.");
         return;
     }
 
-    // Preparamos los datos limpios para el Excel
     const datosExcel = listaProductosGlobal.map(p => ({
         "Código": p.codigo,
         "Nombre": p.nombre,
@@ -332,12 +332,10 @@ function exportarExcel() {
         "Estado": p.cantidad === 0 ? "Agotado" : (p.cantidad < 10 ? "Stock bajo" : "Disponible")
     }));
 
-    // Creamos la hoja de cálculo y el libro
     const worksheet = XLSX.utils.json_to_sheet(datosExcel);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Inventario");
 
-    // Descargamos el archivo con fecha actual o nombre fijo
     XLSX.writeFile(workbook, "Reporte_Inventario.xlsx");
 }
 
@@ -347,11 +345,9 @@ function exportarPDF() {
         return;
     }
 
-    // Usamos jsPDF desde la ventana global
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Título del reporte en el PDF
     doc.setFontSize(18);
     doc.setTextColor(40, 40, 40);
     doc.text("Reporte General de Inventario", 14, 20);
@@ -360,7 +356,6 @@ function exportarPDF() {
     doc.setTextColor(100, 100, 100);
     doc.text(`Fecha de generación: ${new Date().toLocaleDateString()}`, 14, 28);
 
-    // Mapeamos los datos para la tabla del PDF
     const columnas = ["Código", "Producto", "Categoría", "Precio", "Stock", "Total"];
     const filas = listaProductosGlobal.map(p => [
         p.codigo,
@@ -371,16 +366,14 @@ function exportarPDF() {
         `$${p.precio * p.cantidad}`
     ]);
 
-    // Generamos la tabla automática usando autoTable
     doc.autoTable({
         head: [columnas],
         body: filas,
         startY: 35,
         theme: 'grid',
-        headStyles: { fillColor: [33, 37, 41] }, // Color oscuro tipo Bootstrap table-dark
+        headStyles: { fillColor: [33, 37, 41] },
         styles: { fontSize: 9 }
     });
 
-    // Guardamos el archivo PDF
     doc.save("Reporte_Inventario.pdf");
 }

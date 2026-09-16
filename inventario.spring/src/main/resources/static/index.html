@@ -12,39 +12,93 @@
 <body class="bg-light d-flex align-items-center justify-content-center vh-100">
 
     <div class="card shadow-lg border-0 rounded-4 p-4" style="width: 100%; max-width: 400px;">
-        <div class="text-center mb-4">
-            <i class="bi bi-box-seam text-primary display-4"></i>
-            <h2 class="fw-bold mt-2 h4">Iniciar Sesión</h2>
-            <p class="text-muted small">Sistema de Control de Inventario</p>
+        
+        <!-- SECCIÓN DE INICIO DE SESIÓN -->
+        <div id="seccion-login">
+            <div class="text-center mb-4">
+                <i class="bi bi-box-seam text-primary display-4"></i>
+                <h2 class="fw-bold mt-2 h4">Iniciar Sesión</h2>
+                <p class="text-muted small">Sistema de Control de Inventario</p>
+            </div>
+
+            <div id="mensajeLogin" class="alert d-none" role="alert"></div>
+
+            <form id="formLogin">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario o Correo</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" id="username" class="form-control" required placeholder="Ingresa tu usuario">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" id="password" class="form-control" required placeholder="Ingresa tu contraseña">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3">
+                    <i class="bi bi-box-arrow-in-right me-2"></i> Ingresar
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="small text-muted mb-0">¿No tienes cuenta? <a href="#" id="btnMostrarRegistro" class="text-primary text-decoration-none fw-bold">Regístrate como Operario</a></p>
+            </div>
         </div>
 
-        <div id="mensajeLogin" class="alert d-none" role="alert"></div>
-
-        <form id="formLogin">
-            <div class="mb-3">
-                <label for="username" class="form-label">Usuario</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" id="username" class="form-control" required placeholder="Ingresa tu usuario">
-                </div>
+        <!-- SECCIÓN DE REGISTRO DE OPERARIO (Oculta por defecto) -->
+        <div id="seccion-registro" style="display: none;">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-plus text-success display-4"></i>
+                <h2 class="fw-bold mt-2 h4">Registro Operario</h2>
+                <p class="text-muted small">Crea tu cuenta nueva</p>
             </div>
 
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" id="password" class="form-control" required placeholder="Ingresa tu contraseña">
-                </div>
-            </div>
+            <div id="mensajeRegistro" class="alert d-none" role="alert"></div>
 
-            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
-                <i class="bi bi-box-arrow-in-right me-2"></i> Ingresar
-            </button>
-        </form>
+            <form id="formRegistro">
+                <div class="mb-3">
+                    <label for="reg-nombre" class="form-label">Nombre</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                        <input type="text" id="reg-nombre" class="form-control" required placeholder="Tu nombre completo">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="reg-email" class="form-label">Correo Electrónico</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" id="reg-email" class="form-control" required placeholder="tucorreo@email.com">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="reg-password" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" id="reg-password" class="form-control" required placeholder="Crea una contraseña">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 py-2 fw-bold shadow-sm mb-3">
+                    <i class="bi bi-check-circle me-2"></i> Registrarse
+                </button>
+            </form>
+
+            <div class="text-center">
+                <p class="small text-muted mb-0">¿Ya tienes una cuenta? <a href="#" id="btnMostrarLogin" class="text-primary text-decoration-none fw-bold">Inicia Sesión</a></p>
+            </div>
+        </div>
+
     </div>
 
     <!-- Script de Bootstrap y el que controlará el login -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.8.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>

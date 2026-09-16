@@ -30,4 +30,14 @@ public class UsuarioController {
         }
         return ResponseEntity.status(401).body("Usuario o contraseña incorrectos");
     }
+    @PostMapping("/registro")
+    public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
+        // Forzamos a que cualquier registro web sea siempre OPERARIO
+        usuario.setRol("OPERARIO");
+        
+        // Aquí encriptas la contraseña (con BCrypt) y guardas el usuario en la BD
+        // ... tu lógica de guardado ...
+        
+        return ResponseEntity.ok("Usuario registrado exitosamente");
+    }
 }
