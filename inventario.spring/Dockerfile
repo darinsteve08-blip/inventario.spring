@@ -2,11 +2,14 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 WORKDIR /app
 
-# Copiamos primero los archivos de dependencias
-COPY pom.xml .
-COPY src ./src
+# Copiamos los archivos apuntando a la carpeta de tu proyecto
+COPY inventario.spring/pom.xml .
+COPY inventario.spring/src ./src
 
-# Compilamos el proyecto
+# Instalamos Maven para compilar dentro del contenedor
+RUN apt-get update && apt-get install -y maven
+
+# Compilamos el proyecto omitiendo pruebas
 RUN mvn clean package -DskipTests
 
 # Fase de ejecución
