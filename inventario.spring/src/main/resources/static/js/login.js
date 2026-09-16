@@ -31,7 +31,7 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
         password: passwordInput
     };
 
-    fetch('https://inventario-api-15v1.onrender.com/api/usuarios/login', {
+    fetch('https://inventario-api-15v1.onrender.com/api/usuarios/index', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credenciales)
