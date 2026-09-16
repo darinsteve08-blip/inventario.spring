@@ -263,8 +263,9 @@ function verificarSesion() {
     const logueado = localStorage.getItem("usuarioLogueado");
     const rutaActual = window.location.pathname;
 
-    if (!logueado && !rutaActual.endsWith("login.html")) {
-        window.location.href = "login.html";
+    // Si no está logueado y no está en el index (que ahora es el login), lo mandamos al index
+    if (!logueado && !rutaActual.endsWith("index.html") && !rutaActual.endsWith("/")) {
+        window.location.href = "index.html";
     }
 }
 
@@ -303,7 +304,7 @@ function configurarInterfazSegunRol() {
 
 function cerrarSesion() {
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 
 // 6. EJECUTAR FUNCIONES AL CARGAR LA PÁGINA

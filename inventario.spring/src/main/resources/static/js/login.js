@@ -33,7 +33,7 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
 
         // Redirigir al index principal después de 1.2 segundos
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "Dashboard.html";
         }, 1200);
     })
     .catch(error => {
