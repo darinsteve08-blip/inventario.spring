@@ -1,12 +1,18 @@
-# Fase de compilación con Maven y JDK 17
-FROM maven:3.8.5-openjdk-17 AS build
+# Fase de compilación
+FROM eclipse-temurin:17-jdk-jammy AS build
 WORKDIR /app
-COPY . .
+
+# Copiamos primero los archivos de dependencias
+COPY pom.xml .
+COPY src ./src
+
+# Compilamos el proyecto
 RUN mvn clean package -DskipTests
 
 # Fase de ejecución
 FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8081
+
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
