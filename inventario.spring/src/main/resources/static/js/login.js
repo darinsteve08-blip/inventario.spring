@@ -18,7 +18,7 @@ if (btnMostrarRegistro && btnMostrarLogin) {
     });
 }
 
-// --- 2. TU CÓDIGO ORIGINAL DE LOGIN (Intacto) ---
+// --- 2. LÓGICA DE LOGIN ---
 document.getElementById("formLogin").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -31,30 +31,28 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
         password: passwordInput
     };
 
-    fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(credenciales)
-})
+    fetch('https://inventario-api-15v1.onrender.com/api/usuarios/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credenciales)
+    })
     .then(async respuesta => {
         if (!respuesta.ok) {
             throw new Error("Credenciales inválidas");
         }
-        return respuesta.json();
+        return respuesta.json(); // En login se mantiene .json() porque el backend devuelve objeto
     })
     .then(data => {
-        // Guardamos los datos de sesión en el navegador
         localStorage.setItem("usuarioLogueado", "true");
         localStorage.setItem("nombreUsuario", data.username);
-        localStorage.setItem("rolUsuario", data.rol); // 'ADMIN' o 'OPERARIO'
+        localStorage.setItem("rolUsuario", data.rol);
 
         divMensaje.className = "alert alert-success";
         divMensaje.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> ¡Bienvenido, ${data.username}! Redirigiendo...`;
         divMensaje.classList.remove("d-none");
 
-        // Redirigir al index principal después de 1.2 segundos
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "Dashboard.html";
         }, 1200);
     })
     .catch(error => {
@@ -64,7 +62,7 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
     });
 });
 
-// --- 3. NUEVA PARTE: REGISTRO DE OPERARIOS ---
+// --- 3. REGISTRO DE OPERARIOS ---
 const formRegistro = document.getElementById("formRegistro");
 if (formRegistro) {
     formRegistro.addEventListener("submit", function(event) {
@@ -81,16 +79,17 @@ if (formRegistro) {
             password: passwordInput
         };
 
-        fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/registro', {
+        fetch('https://inventario-api-15v1.onrender.com/api/usuarios/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevoOperario)
         })
+        // CORRECCIÓN APLICADA AQUÍ:
         .then(async respuesta => {
             if (!respuesta.ok) {
                 throw new Error("No se pudo completar el registro");
             }
-            return respuesta.json();
+            return respuesta.text(); // Cambiado a .text() para recibir el String de Spring Boot
         })
         .then(data => {
             divMensajeReg.className = "alert alert-success";
@@ -99,7 +98,6 @@ if (formRegistro) {
 
             formRegistro.reset();
 
-            // Regresar al login después de 2 segundos
             setTimeout(() => {
                 divMensajeReg.classList.add("d-none");
                 seccionRegistro.style.display = "none";
