@@ -31,7 +31,7 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
         password: passwordInput
     };
 
-    fetch('https://inventario-api-15v1.onrender.com/api/usuarios/login', {
+    fetch("https://inventario-api-15v1.onrender.com/api/usuarios/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credenciales)
@@ -76,12 +76,12 @@ if (formRegistro) {
         const divMensajeReg = document.getElementById("mensajeRegistro");
 
         const nuevoOperario = {
-            username: nombreInput, // O 'nombre' dependiendo de cómo lo reciba tu backend
+            username: nombreInput, 
             email: emailInput,
             password: passwordInput
         };
 
-        fetch('https://inventario-api-15v1.onrender.com/api/usuarios/registro', {
+        fetch("https://inventario-api-15v1.onrender.com/api/usuarios/registro", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevoOperario)
