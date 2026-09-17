@@ -267,6 +267,9 @@ function verificarSesion() {
     if (!logueado && !rutaActual.endsWith("index.html") && !rutaActual.endsWith("/")) {
         window.location.href = "index.html";
     }
+    if (logueado && (rutaActual.endsWith("index.html") || rutaActual.endsWith("/"))) {
+        window.location.href = "Dashboard.html";
+    }
 }
 
 function configurarInterfazSegunRol() {
