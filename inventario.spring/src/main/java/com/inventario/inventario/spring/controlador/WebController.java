@@ -8,6 +8,6 @@ public class WebController {
     // Cuando alguien entre a la raíz de la app, lo mandamos al login
     @GetMapping("/")
     public String raiz() {
-        return "forward:/login.html";
+        return "forward:/index.html";
     }
 }
