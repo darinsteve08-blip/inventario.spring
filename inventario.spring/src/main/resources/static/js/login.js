@@ -34,7 +34,7 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
     fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(datosUsuario)
+    body: JSON.stringify(credenciales)
 })
     .then(async respuesta => {
         if (!respuesta.ok) {
@@ -81,7 +81,7 @@ if (formRegistro) {
             password: passwordInput
         };
 
-        fetch("https://inventario-api-15v1.onrender.com/api/usuarios/registro", {
+        fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevoOperario)
