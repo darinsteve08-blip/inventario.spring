@@ -18,7 +18,7 @@ public class Usuario {
     // Constructores
     public Usuario() {}
 
-    public Usuario(String username, String password, String rol) {
+    public Usuario(String username, String password, String rol, String correo) {
         this.username = username;
         this.password = password;
         this.rol = rol;
