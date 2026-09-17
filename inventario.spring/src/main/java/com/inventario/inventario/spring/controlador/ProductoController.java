@@ -69,4 +69,8 @@ public class ProductoController {
         producto.setIdProducto(id);
         return repositorio.save(producto);
     }
+    @GetMapping("/buscar/{nombre}")
+    public List<Producto> buscarPorNombre(@PathVariable String nombre) {
+        return repositorio.findByNombreContainingIgnoreCase(nombre);
+    }
 }
