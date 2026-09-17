@@ -79,7 +79,7 @@ if (formRegistro) {
             password: passwordInput
         };
 
-        fetch('https://inventario-api-15v1.onrender.com/api/usuarios/registro', {
+        fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevoOperario)

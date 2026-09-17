@@ -15,7 +15,7 @@ function cargarDashboard() {
 
     if (!elTotal) return; 
 
-    fetch('https://inventario-api-15v1.onrender.com/api/productos')
+    fetch('https://inventario-api-l5v1.onrender.com/api/productos')
     .then(respuesta => respuesta.json())
     .then(datos => {
         elTotal.textContent = datos.length;
@@ -52,7 +52,7 @@ function cargarDashboard() {
 function mostrarProductos() {
     if (!tabla) return; 
     
-    fetch('https://inventario-api-15v1.onrender.com/api/productos')
+    fetch('https://inventario-api-l5v1.onrender.com/api/productos')
     .then(respuesta => respuesta.json())
     .then(datos => {
         listaProductosGlobal = datos; // Guardamos los datos globalmente
