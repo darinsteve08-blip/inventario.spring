@@ -13,15 +13,16 @@ public class Usuario {
     private String username;
     private String password;
     private String rol;
-    private String correo;
+    private String email;
 
     // Constructores
     public Usuario() {}
 
-    public Usuario(String username, String password, String rol, String correo) {
+    public Usuario(String username, String password, String rol, String email) {
         this.username = username;
         this.password = password;
         this.rol = rol;
+        this.email = email;
     }
 
     // Getters y Setters
@@ -36,6 +37,6 @@ public class Usuario {
 
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
-    public String getCorreo() {return correo;}
-    public void setCorreo(String correo) {this.correo = correo;}
+    public String getEmail() {return email;}
+    public void setEmail(String email) {this.email = email;}
 }

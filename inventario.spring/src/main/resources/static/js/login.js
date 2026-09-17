@@ -31,11 +31,11 @@ document.getElementById("formLogin").addEventListener("submit", function(event) 
         password: passwordInput
     };
 
-    fetch("https://inventario-api-15v1.onrender.com/api/usuarios/login", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credenciales)
-    })
+    fetch('https://inventario-api-l5v1.onrender.com/api/usuarios/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datosUsuario)
+})
     .then(async respuesta => {
         if (!respuesta.ok) {
             throw new Error("Credenciales inválidas");
