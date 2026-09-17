@@ -97,6 +97,7 @@ function dibujarTabla(datos) {
             <tr>
                 <td class="ps-3"><span class="badge bg-secondary">${p.codigo}</span></td>
                 <td class="fw-bold">${p.nombre}</td>
+                <td>${p.marca || 'N/A'}</td>
                 <td>${p.categoria}</td>
                 <td>${p.proveedor || p.proovedor || 'N/A'}</td>
                 <td>$${p.precio}</td>
@@ -144,6 +145,7 @@ if (formulario) {
         .then(p => {
             document.getElementById("codigo").value = p.codigo;
             document.getElementById("nombre").value = p.nombre;
+            document.getElementById("marca").value = p.marca || '';
             document.getElementById("categoria").value = p.categoria;
             document.getElementById("proveedor").value = p.proveedor || p.proovedor;
             document.getElementById("precio").value = p.precio;
@@ -157,6 +159,7 @@ if (formulario) {
         const producto = {
             codigo: document.getElementById("codigo").value,
             nombre: document.getElementById("nombre").value,
+            marca: document.getElementById("marca").value,
             categoria: document.getElementById("categoria").value,
             proveedor: document.getElementById("proveedor").value,
             precio: document.getElementById("precio").value,
@@ -327,6 +330,7 @@ function exportarExcel() {
     const datosExcel = listaProductosGlobal.map(p => ({
         "Código": p.codigo,
         "Nombre": p.nombre,
+        "Marca": p.marca || 'N/A',
         "Categoría": p.categoria,
         "Proveedor": p.proveedor || p.proovedor || 'N/A',
         "Precio ($)": p.precio,
@@ -363,6 +367,7 @@ function exportarPDF() {
     const filas = listaProductosGlobal.map(p => [
         p.codigo,
         p.nombre,
+        p.marca || 'N/A',
         p.categoria,
         `$${p.precio}`,
         p.cantidad,

@@ -13,19 +13,17 @@
     <!-- Navbar Bootstrap actualizado para soportar roles y diseño responsivo -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-box-seam"></i> Inventario</a>
+            <a class="navbar-brand fw-bold" href="Dashboard.html"><i class="bi bi-box-seam"></i> Inventario</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <!-- CAMBIO 1: Agregamos id="menuRegistrar" para ocultarlo automáticamente al operario -->
+                    <li class="nav-item"><a class="nav-link" href="Dashboard.html">Inicio</a></li>
                     <li class="nav-item" id="menuRegistrar"><a class="nav-link active" href="registrar.html">Registrar</a></li>
                     <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
                 </ul>
                 
-                <!-- CAMBIO 2: Contenedor dinámico para el usuario logueado y botón salir -->
                 <div class="d-flex align-items-center text-white" id="infoUsuarioNav">
                     <!-- Se llena automáticamente con app.js -->
                 </div>
@@ -53,6 +51,11 @@
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre del producto:</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ejemplo: Teclado" required>
+                            </div>
+                            <!-- NUEVO CAMPO: Marca -->
+                            <div class="mb-3">
+                                <label for="marca" class="form-label">Marca:</label>
+                                <input type="text" class="form-control" id="marca" name="marca" placeholder="Ejemplo: Logitech" required>
                             </div>
                             <div class="mb-3">
                                 <label for="categoria" class="form-label">Categoría:</label>
