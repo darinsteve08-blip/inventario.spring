@@ -25,7 +25,7 @@ public class Producto {
     
     @Column(name = "proovedor") // Respetamos el nombre con doble 'o' que tenías en tu BD
     private String proveedor;
-    
+    private String marca;
     private int precio;
     private int cantidad;
 
@@ -62,4 +62,6 @@ public class Producto {
 
     public int getCantidad() { return cantidad; }
     public void setCantidad(int cantidad) { this.cantidad = cantidad; }
+    public String getMarca() { return marca;}
+    public void setMarca(String marca)  { this.marca = marca;}
 }
